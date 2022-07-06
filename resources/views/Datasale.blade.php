@@ -5,6 +5,8 @@
 
 @section('contents')
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
     <!-- Main content -->
     <section class="content">
 
@@ -29,10 +31,13 @@
                     @csrf
                     <a type="button" href="Datasale/export/" style="margin-left:6px;color:white;" class="btn btn-warning">Export</a>
                     <button type="submit" class="btn btn-primary" >Import</button>
-                    
-        </form>
+                    <div class="progress" style="text-align: center;height:20px;">
+                        <div class="bar" style="text-align: center;height:20px;"></div >
+                        <div class="percent" style="text-align: center; height:20px; padding-top:10px;margin:none;">0%</div >
+                    </div>
+                  </form>
 
-            @livewire('datasale.datasale')
+            @livewire('datasale.index')
 
       </section>
       <!-- /.content -->

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\DatasaleImport;
 use App\Exports\DatasaleExport;
+use App\Models\Datasale;
 
 class DatasaleController extends Controller
 {
@@ -23,7 +24,6 @@ class DatasaleController extends Controller
         ]);
         
         $path = $request->file('file');
-
  
         Excel::import(new DatasaleImport,$request->file('file'));
  

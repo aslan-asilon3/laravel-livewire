@@ -20,21 +20,10 @@ class DatamemberrawController extends Controller
     }
 
 
-    // public function import(Request $request) 
-    // {
-    //     $request->validate([
-    //         'file' => 'required|max:10000|mimes:xlsx,xls',
-    //     ]);
-        
-    //     $path = $request->file('file');
 
-    //     Excel::import(new DatamemberrawImport, $path); 
-        
-    //     return back()->with('success', 'Excel Data Member Raw Imported successfully.');
-    // }
-
-        public function import(Request $request) 
+    public function import(Request $request) 
     {
+        dd('tes');
         $request->validate([
             'file' => 'required|max:10000|mimes:xlsx,xls',
         ]);

@@ -18,6 +18,8 @@
                 @include('livewire.datasale.create')
             @endif --}}
         
+
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table">
@@ -91,4 +93,32 @@
                 window.livewire.emit('deleteDatamember',id);
         }
     </script>
+
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
+ <script type="text/javascript">
+     var SITEURL = "{{URL('/')}}";
+     $(function () {
+         $(document).ready(function () {
+             var bar = $('.bar');
+             var percent = $('.percent');
+             $('form').ajaxForm({
+                 beforeSend: function () {
+                     var percentVal = '0%';
+                     bar.width(percentVal)
+                     percent.html(percentVal);
+                 },
+                 uploadProgress: function (event, position, total, percentComplete) {
+                     var percentVal = percentComplete + '%';
+                     bar.width(percentVal)
+                     percent.html(percentVal);
+                 },
+                 complete: function (xhr) {
+                     alert('File Has Been Uploaded Successfully');
+                     window.location.href = SITEURL + "/" + "upload-form";
+                 }
+             });
+         });
+     });
+ </script> --}}
 </div>

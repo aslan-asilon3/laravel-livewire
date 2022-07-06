@@ -9,7 +9,6 @@ class Datamember extends Model
 {
     use HasFactory;
 
-    use HasFactory;
     protected $table = 'datamembers';
     protected $guarded = [];
 

@@ -3,6 +3,7 @@
         <div class="card">
 
 
+
             @if(session()->has('success'))
             <div class="alert alert-success" role="alert">
                 {{ session()->get('success') }}
@@ -13,12 +14,12 @@
                     {{ session()->get('error') }}
                 </div>
             @endif
-            {{-- @if($updateDatamemberraw)
-                @include('livewire.datamemberraw.update')
+            {{-- @if($updateDatamember)
+                @include('livewire.datamember.update')
             @else
-                @include('livewire.datamemberraw.create')
+                @include('livewire.datamember.create')
             @endif --}}
-        
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table">
@@ -26,33 +27,29 @@
                             <tr>
                                 <th>ID Member</th>
                                 <th>No HP</th>
-                                <th>Status Cek Data</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if (count($datamemberraws) > 0)
-                                @foreach ($datamemberraws as $datamemberraw)
+                            @if (count($datamembers) > 0)
+                                @foreach ($datamembers as $datamember)
                                     <tr>
                                         <td>
-                                            {{$datamemberraw->id_member}}
+                                            {{$datamember->id_member}}
                                         </td>
                                         <td>
-                                            {{$datamemberraw->no_hp}}
+                                            {{$datamember->no_hp}}
                                         </td>
                                         <td>
-                                            {{$datamemberraw->status_cek_data}}
-                                        </td>
-                                        <td>
-                                            <button wire:click="edit({{$datamemberraw->id}})" class="btn btn-primary btn-sm">Edit</button>
-                                            <button onclick="deleteCategory({{$datamemberraw->id}})" class="btn btn-danger btn-sm">Delete</button>
+                                                <button wire:click="edit({{$datamember->id}})" class="btn btn-primary btn-sm">Edit</button>
+                                                <button onclick="deleteCategory({{$datamember->id}})" class="btn btn-danger btn-sm">Delete</button>
                                         </td>
                                     </tr>
                                 @endforeach
                             @else
                                 <tr>
                                     <td colspan="3" align="center">
-                                        No datamemberraw Found.
+                                        No datamember Found.
                                     </td>
                                 </tr>
                             @endif

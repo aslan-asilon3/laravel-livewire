@@ -1,20 +1,16 @@
 <?php
 
-namespace App\Http\Livewire\Datamember;
+namespace App\Http\Livewire\Dataakumulasipoin;
 
 use Livewire\Component;
-use App\Models\Datamember as Datamembers;
+use App\Models\Dataakumulasipoin as Dataakumulasipoins;
 
-class Datamember extends Component
+class Index extends Component
 {
-    public $datamembers, $id_member, $no_hp, $Excel;
+    public $datamembers, $id_member, $no_hp;
 
     public $updateDatamember = false; 
     
-    //     public function mount($updateCategory)
-    // {
-    //     $this->updateCategory = $updateCategory;
-    // }
 
     protected $listeners = [
         'deleteDatamember'=>'destroy'
@@ -29,8 +25,8 @@ class Datamember extends Component
     public function render()
     {
         
-        $this->datamembers = Datamembers::select('id_member','no_hp')->get();
-        return view('livewire.datamember.datamember');
+        $this->datamembers = Datamembers::select('id','id_member','no_hp')->get();
+        return view('livewire.datamember.index');
 
 
     }  
@@ -46,18 +42,18 @@ class Datamember extends Component
         // Validate Form Request
         $this->validate();        
         try{
-            // Create Category
+            // Create Data member
             Datamembers::create([
                 'id_member'=>$this->id_member,
                 'no_hp'=>$this->no_hp
             ]);
     
             // Set Flash Message
-            session()->flash('success','Datamember Created Successfully!!');            // Reset Form Fields After Creating Category
+            session()->flash('success','Datamember Created Successfully!!');            // Reset Form Fields After Creating Data member
             $this->resetFields();
         }catch(\Exception $e){
             // Set Flash Message
-            session()->flash('error','Something goes wrong while creating Datamember!!');            // Reset Form Fields After Creating Category
+            session()->flash('error','Something goes wrong while creating Datamember!!');            // Reset Form Fields After Creating Data member
             $this->resetFields();
         }
     }    
@@ -82,7 +78,7 @@ class Datamember extends Component
         // Validate request
         $this->validate();        
         try{            
-            // Update category
+            // Update Data member
             Datamembers::find($this->id)->fill([
                 'id_member'=>$this->id_member,
                 'no_hp'=>$this->no_hp
@@ -97,13 +93,13 @@ class Datamember extends Component
         }
     }    
     
-    public function destroy($id)
-    {
+    public function destroy($id){
         try{
             Datamembers::find($id)->delete();
-            session()->flash('success',"Datamember Deleted Successfully!!");
+            session()->flash('success',"Data member Deleted Successfully!!");
         }catch(\Exception $e){
-            session()->flash('error',"Something goes wrong while deleting Datamember!!");
+            session()->flash('error',"Something goes wrong while deleting Data member!!");
         }
     }
+
 }

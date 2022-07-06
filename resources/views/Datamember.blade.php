@@ -10,12 +10,11 @@
 
 
       <div class="btn btn-group " style="width:5px;">
-        <button type="button" class="btn btn-primary">Import</button>
         {{-- <button wire:click="export" type="button" style="margin-left:6px;color:white;" class="btn btn-warning">Export</button> --}}
-        <a href="Datamember/export"  type="button" style="margin-left:6px;color:white;" class="btn btn-warning">Export</a>
-    </div>
+        <button type="button" href="Datamember/export"  type="button" style="margin-left:6px;color:white;" class="btn btn-warning">Export</button>
+      </div>
     
-            @livewire('datamember.datamember')
+            @livewire('datamember.index')
 
       </section>
       <!-- /.content -->

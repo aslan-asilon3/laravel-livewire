@@ -38,23 +38,24 @@ Route::post('Datasale/import/', [DatasaleController::class, 'import']);
 
 // =========== Data Member Raw
 Route::get('/datamemberraw', function () {
-    return view('datamemberraw');
+    return view('livewire/datamemberraw/index');
 });
 Route::get('Datamemberraw/export/', [DatamemberrawController::class, 'export']);
 Route::post('Datamemberraw/import/', [DatamemberrawController::class, 'import']);
 // =========== EndData Member Raw
 
 
-// // =========== Data Member Raw
-// Route::get('/dataakumulasipoin', function () {
-//     return view('datamemberraw');
-// });
-// Route::get('Datamemberraw/export/', [DatamemberrawController::class, 'export']);
-// Route::post('Datamemberraw/import/', [DatamemberrawController::class, 'import']);
-// // =========== EndData Member Raw
+// =========== Data Akumulasi Poin
+Route::get('/dataakumulasipoin', function () {
+    return view('livewire.dataakumulasipoin.index');
+});
+Route::get('Dataakumulasipoin/export/', [DataakumulasipoinController::class, 'export']);
+Route::post('Dataakumulasipoin/import/', [DataakumulasipoinController::class, 'import']);
+// =========== End Data Akumulasi poin
 
 
 // =========== Data Contact
 Route::get('/contact',function(){
     return view('contact');
 });
+// =========== End Data Contact

@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Datamemberraw;
 use Livewire\Component;
 use App\Models\Datamemberraw as Datamemberraws;
 
-class Datamemberraw extends Component
+class Index extends Component
 {
     public $datamemberraws, $id_member, $no_hp, $status_cek_data;
 
@@ -31,7 +31,7 @@ class Datamemberraw extends Component
     {
         
         $this->datamemberraws = Datamemberraws::select('id_member','no_hp','status_cek_data')->get();
-        return view('livewire.datamemberraw.datamemberraw');
+        return view('livewire.datamemberraw.index');
 
 
     }    public function resetFields(){

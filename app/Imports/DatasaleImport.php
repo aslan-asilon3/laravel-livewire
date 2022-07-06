@@ -41,8 +41,10 @@ class DatasaleImport implements ToModel,WithStartRow
  
         $UpdateSale->save();
 
+        // Jumlahkan total poin dari batch yang sama
         $SumTotal = Datasale::where('no_hp', '=', $this->cek($row[4]))->where('batch', $row[2])->count();
 
+        // jika nmr hp nya lebih lebih dari 1 maka jumlahkan poin
         if($SumTotal > 1){
             $Sum = Datasale::where('no_hp', '=', $this->cek($row[4]))->where('batch', $row[2])->sum('poin');
             $SumToAkum =  Akumulasipoin::create([
@@ -62,27 +64,6 @@ class DatasaleImport implements ToModel,WithStartRow
         ->get();
 
        
-
-
-     
-        
-
-    
-        
-
-        // return new Datasale([
-        //     //
-        //     'id_member' => $row[1],
-        //     'batch' => $row[2],
-        //     'poin' => $row[3],
-        //     'no_hp' => $this->cek($row[4]),
-        //     'tanggal' => $row[5],
-        //     'source' => $row[6],
-        //     'recipient' => $row[7],
-        //     'status_member' => $row[8],
-        //     'status_cek_is_member' => $row[9],
-        //     // 'created_at' => ($row[3]),
-        // ]);
 
     }
 

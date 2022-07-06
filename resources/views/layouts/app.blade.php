@@ -28,6 +28,36 @@
   <link rel="stylesheet" href="assets/plugins/summernote/summernote-bs4.min.css">
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  
+          <style>
+
+            body{
+                background: #ccc;
+            }
+
+            form{
+                background: #fff;
+                padding: 20px;
+            }
+
+            .progress { 
+                position:relative;
+                width:100%;
+            }
+            .bar { 
+                background-color: #00ff00;
+                width:0%;
+                height:20px;
+            }
+            .percent {
+                position:absolute;
+                display:inline-block; 
+                left:50%;
+                color: #040608;
+            }
+        </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -230,7 +260,7 @@
            </li>
 
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="/dataakumulasipoin" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Data Akumulasi Poin
@@ -243,7 +273,7 @@
             <a href="/contact" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                Contact
+                Category
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -328,7 +358,44 @@
 <script src="assets/dist/js/pages/dashboard.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
+ <script type="text/javascript">
+     var SITEURL = "{{URL('/')}}";
+     $(function () {
+         $(document).ready(function () {
+             var bar = $('.bar');
+             var percent = $('.percent');
+             $('form').ajaxForm({
+                 beforeSend: function () {
+                     var percentVal = '0%';
+                     bar.width(percentVal)
+                     percent.html(percentVal);
+                 },
+                 uploadProgress: function (event, position, total, percentComplete) {
+                     var percentVal = percentComplete + '%';
+                     bar.width(percentVal)
+                     percent.html(percentVal);
+                 },
+                 complete: function (xhr) {
+                  swal({
+                  type: "success",
+                  icon: "success",
+                  title: "BERHASIL!",
+                  text: "Berhasil Upload",
+                  timer: 1500,
+                  showConfirmButton: false,
+                  showCancelButton: false,
+                  buttons: false,
+              }).then(function () {
+                location.reload();
+            });
+                    //  window.location.href = SITEURL + "/" + "datasale";
+                 }
+             });
+         });
+     });
+ </script>
 </body>
 </html>
